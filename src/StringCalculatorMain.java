@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -8,16 +9,34 @@ import java.util.Scanner;
 
 public class StringCalculatorMain
 {
-    static Scanner scanner;
 
     public static void main(String args[])
     {
-        scanner = new Scanner(System.in);
         String inputString;
 
-        inputString = scanner.nextLine();
+        inputString="";
+        generateOutput(inputString);
+
+        inputString="1";
+        generateOutput(inputString);
+
+        inputString="1,2";
+        generateOutput(inputString);
+
+        inputString="1,2,3,4,5,6,7,8,9,10";
+        generateOutput(inputString);
+
+        inputString="1\n2,3";
+        generateOutput(inputString);
+    }
+
+    static void generateOutput(String inputString){
+
+        System.out.println("Input : " + inputString);
+
+
         int sumOfNumber = StringCalculator.Add(inputString);
 
-        System.out.println(sumOfNumber);
+        System.out.println("Sum : " + sumOfNumber + "\n\n");
     }
 }

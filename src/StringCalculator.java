@@ -15,7 +15,8 @@ public class StringCalculator
         }
         else if(numbers.contains(","))
         {
-            String[] listOfNumbers = numbers.split(",");
+            String[] listOfNumbers = splitArray(numbers);
+
             int[] listOfNumberInInt = convertStringArraytoIntArray(listOfNumbers);
 
             int sum = IntStream.of(listOfNumberInInt).sum();
@@ -26,6 +27,12 @@ public class StringCalculator
         {
             return toInt(numbers);
         }
+    }
+
+    // This method will split the array by using delimiter
+    private static String[] splitArray(String numbers) {
+        String[] tokens = numbers.split(",|\n");
+        return tokens;
     }
 
     // This method will be used to convert the string to integer if the string is digit else it throws exception
@@ -56,4 +63,5 @@ public class StringCalculator
         }
         return new int[0];
     }
+
 }

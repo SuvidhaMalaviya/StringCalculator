@@ -34,4 +34,11 @@ public class StringCalculatorTest
     {
         assertEquals(6,StringCalculator.Add("2,2,2"));
     }
+
+    //This method will used to take care of \n as valid delimiter
+    @Test
+    public void acceptNewLineAsValidDelimiter()
+    {
+        assertEquals(6,StringCalculator.Add("2,2\n2"));
+    }
 }
