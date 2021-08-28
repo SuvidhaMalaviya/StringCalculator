@@ -91,6 +91,20 @@ public class StringCalculatorTest
     @Test
     public void allowDelimiterOfAnyLength()
     {
-        assertEquals(6,StringCalculator.Add("//[***]\\n1***2***3"));
+        assertEquals(6,StringCalculator.Add("//[***]\n1***2***3"));
+    }
+
+    //This method will used accept multiple dynamic delimiter
+    @Test
+    public void allowMultipleDelimiter()
+    {
+        assertEquals(6,StringCalculator.Add("//[*][%]\n1*2%3"));
+    }
+
+    //This method will used accept multiple dynamic delimiterof any length
+    @Test
+    public void allowMultipleDelimiterOfAnyLength()
+    {
+        assertEquals(6,StringCalculator.Add("//[**][%%]\n1**2%%3"));
     }
 }

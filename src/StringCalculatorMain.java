@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.Scanner;
-
 /**
  * This class is the main class for the String Calculator that will be used to
  * take string from user and call add method to add numbers is that using different delimiter
@@ -38,7 +35,13 @@ public class StringCalculatorMain
         inputString="1,2,3,4,5,1002,2000";
         generateOutput(inputString);
 
-        inputString="//[***]\\n1***2***3";
+        inputString="//[***]\n1***2***3";
+        generateOutput(inputString);
+
+        inputString="//[*][%]\n1*2%3";
+        generateOutput(inputString);
+
+        inputString="//[**][%%]\n1**2%%3";
         generateOutput(inputString);
 
         System.out.println("Add method calls for " + StringCalculator.GetCalledCount() + " Times\n\n");

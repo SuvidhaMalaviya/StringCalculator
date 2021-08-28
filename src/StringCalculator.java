@@ -97,9 +97,37 @@ public class StringCalculator
     // Allow any length of delimiter
     private static String[] splitByDynamicDelimiterOfAnyLength(String numbers) {
 
-        String dynamicDelimiter = numbers.substring(3,numbers.indexOf(']'));
-        String listOfNumber = numbers.substring(numbers.indexOf(']')+3,numbers.length());
-        return listOfNumber.split(Pattern.quote(dynamicDelimiter));
+        String dynamicDelimiter = "";
+        dynamicDelimiter = findDelimiter(numbers);
+        String listOfNumber = numbers.substring(numbers.lastIndexOf(']')+2,numbers.length());
+        if(listOfNumber.startsWith("]"))
+        {
+            listOfNumber = listOfNumber.substring(3);
+            return listOfNumber.split(dynamicDelimiter);
+        }
+
+        return listOfNumber.split(dynamicDelimiter);
+    }
+
+    // This method will generate more than one delimeter
+    private static String findDelimiter(String numbers) {
+        String deliPart = numbers.substring(2,numbers.lastIndexOf("]")+1);
+        String tempS = deliPart;
+        String delimiter = "";
+
+        while (!tempS.isEmpty())
+        {
+            int closingPosition = tempS.indexOf("]");
+            delimiter = delimiter + Pattern.quote(tempS.substring(1,closingPosition));
+            tempS = tempS.substring(closingPosition + 1);
+
+            if(!tempS.isEmpty())
+            {
+                delimiter = delimiter + "|";
+            }
+        }
+
+        return delimiter;
     }
 
     // This method will be used to convert the string to integer if the string is digit else it throws exception
