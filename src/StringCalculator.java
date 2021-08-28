@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
  * This class is used to add the numbers given in string format
  */
@@ -13,7 +16,10 @@ public class StringCalculator
         else if(numbers.contains(","))
         {
             String[] listOfNumbers = numbers.split(",");
-            int sum = toInt(listOfNumbers[0]) + toInt(listOfNumbers[1]);
+            int[] listOfNumberInInt = convertStringArraytoIntArray(listOfNumbers);
+
+            int sum = IntStream.of(listOfNumberInInt).sum();
+
             return sum;
         }
         else
@@ -35,5 +41,19 @@ public class StringCalculator
             System.out.println("The value must be number without decimal point");
         }
         return convertedInt;
+    }
+
+    // This method will convert string array to int array
+    private static int[] convertStringArraytoIntArray(String[] listOfNumbers)
+    {
+        try
+        {
+            return Arrays.stream(listOfNumbers).mapToInt(Integer::parseInt).toArray();
+        }
+        catch (Exception e)
+        {
+            System.out.println("The value must be number without decimal point");
+        }
+        return new int[0];
     }
 }

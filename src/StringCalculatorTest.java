@@ -21,10 +21,17 @@ public class StringCalculatorTest
         assertEquals(1,StringCalculator.Add("1"));
     }
 
-    // This method will used to take care of the two number string seprated by comma
+    // This method will used to take care of the two number string separated by comma
     @Test
     public void returnSumWhenStringHavingTwoNumberDeliByComma()
     {
         assertEquals(3,StringCalculator.Add("1,2"));
+    }
+
+    //This method will used to take care of more than two number separated by comma
+    @Test
+    public void returnSumWhenStringHavingMoreThenTwoNumbersDeliByComma()
+    {
+        assertEquals(6,StringCalculator.Add("2,2,2"));
     }
 }
