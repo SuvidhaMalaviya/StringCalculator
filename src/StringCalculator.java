@@ -68,6 +68,11 @@ public class StringCalculator
     // This method will split the array by using delimiter
     private static String[] splitArray(String numbers) {
 
+        if(numbers.startsWith("//["))
+        {
+            return splitByDynamicDelimiterOfAnyLength(numbers);
+        }
+
         if(numbers.startsWith("//"))
         {
             return splitByDynamicDelimiter(numbers);
@@ -85,6 +90,15 @@ public class StringCalculator
         String dynamicDelimiter = matcher.group(1);
         String listOfNumber = matcher.group(2);
 
+        return listOfNumber.split(Pattern.quote(dynamicDelimiter));
+    }
+
+    // This method will split the array in to parts the delimeter and the numbers string and then split to number array
+    // Allow any length of delimiter
+    private static String[] splitByDynamicDelimiterOfAnyLength(String numbers) {
+
+        String dynamicDelimiter = numbers.substring(3,numbers.indexOf(']'));
+        String listOfNumber = numbers.substring(numbers.indexOf(']')+3,numbers.length());
         return listOfNumber.split(Pattern.quote(dynamicDelimiter));
     }
 

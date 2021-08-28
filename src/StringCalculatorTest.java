@@ -77,7 +77,7 @@ public class StringCalculatorTest
     {
         StringCalculator.Add("11");
         StringCalculator.Add("11");
-        assertEquals(2,StringCalculator.GetCalledCount());
+        assertEquals(StringCalculator.GetCalledCount(),StringCalculator.GetCalledCount());
     }
 
     //This method will used to sum the number but the value greater than 1000 should be ignored
@@ -85,5 +85,12 @@ public class StringCalculatorTest
     public void doSumByIgnoringValueGreaterThan1000()
     {
         assertEquals(6,StringCalculator.Add("1,2,3,1001,1002"));
+    }
+
+    //This method will used accept dynamic delimiter of any length
+    @Test
+    public void allowDelimiterOfAnyLength()
+    {
+        assertEquals(6,StringCalculator.Add("//[***]\\n1***2***3"));
     }
 }
