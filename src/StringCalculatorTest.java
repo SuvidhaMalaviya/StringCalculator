@@ -41,4 +41,11 @@ public class StringCalculatorTest
     {
         assertEquals(6,StringCalculator.Add("2,2\n2"));
     }
+
+    //This method will used to support dynamic delimiter syntax of string
+    @Test
+    public void acceptStringWithDynamicDelimiter()
+    {
+        assertEquals(3,StringCalculator.Add("//;\n1;2"));
+    }
 }

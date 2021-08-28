@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 /**
@@ -13,7 +15,7 @@ public class StringCalculator
         {
             return 0;
         }
-        else if(numbers.contains(","))
+        else
         {
             String[] listOfNumbers = splitArray(numbers);
 
@@ -23,14 +25,23 @@ public class StringCalculator
 
             return sum;
         }
-        else
-        {
-            return toInt(numbers);
-        }
+
     }
 
     // This method will split the array by using delimiter
     private static String[] splitArray(String numbers) {
+
+        if(numbers.startsWith("//"))
+        {
+            Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(numbers);
+            matcher.matches();
+
+            String dynamicDelimiter = matcher.group(1);
+            String listOfNumber = matcher.group(2);
+
+            return listOfNumber.split(dynamicDelimiter);
+        }
+
         String[] tokens = numbers.split(",|\n");
         return tokens;
     }
