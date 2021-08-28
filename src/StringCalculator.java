@@ -1,7 +1,11 @@
+import com.sun.deploy.util.StringUtils;
+
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
+
 
 /**
  * This class is used to add the numbers given in string format
@@ -21,11 +25,26 @@ public class StringCalculator
 
             int[] listOfNumberInInt = convertStringArraytoIntArray(listOfNumbers);
 
+            checkAllNumbersAreNonNegative(listOfNumberInInt);
+
             int sum = IntStream.of(listOfNumberInInt).sum();
 
             return sum;
         }
 
+    }
+
+    // This method will check that if all numbers are non negative or not.
+    // If not it will throw an Exception
+    private static void checkAllNumbersAreNonNegative(int[] listOfNumberInInt) {
+        int[] negativeNumbers = Arrays.stream(listOfNumberInInt)
+                .filter(i -> i < 0)        // >= to include 0
+                .toArray();
+
+        if (negativeNumbers.length > 0)
+        {
+            throw new RuntimeException("Negatives not allowed : " + Arrays.toString(negativeNumbers));
+        }
     }
 
     // This method will split the array by using delimiter
@@ -40,6 +59,7 @@ public class StringCalculator
         return tokens;
     }
 
+    // This method will split the array in to parts the delimeter and the numbers string and then split to number array
     private static String[] splitByDynamicDelimiter(String numbers) {
         Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(numbers);
         matcher.matches();

@@ -55,4 +55,19 @@ public class StringCalculatorTest
     {
         assertEquals(3,StringCalculator.Add("//.\n1.2"));
     }
+
+    //This method will raise an Exception when string contains negative numbers
+    @Test
+    public void raiseExceptionWhenGetNegativesValues()
+    {
+        try
+        {
+            StringCalculator.Add("-1,2,3,4");
+            fail("Negatives not allowed");
+        }
+        catch (Exception e)
+        {
+            assertEquals("Negatives not allowed : [-1]", e.getMessage());
+        }
+    }
 }

@@ -34,6 +34,12 @@ public class StringCalculatorMain
 
         inputString="//.\n1.2.3";
         generateOutput(inputString);
+
+        inputString="-1,2,3,4"; // Throws Exception and exection stops
+        generateOutput(inputString);
+
+        inputString="-1,2,3,4,-5"; // Throws Exception and exection stops
+        generateOutput(inputString);
     }
 
     static void generateOutput(String inputString){
