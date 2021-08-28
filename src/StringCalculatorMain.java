@@ -35,6 +35,9 @@ public class StringCalculatorMain
         inputString="//.\n1.2.3";
         generateOutput(inputString);
 
+        inputString="1,2,3,4,5,1002,2000";
+        generateOutput(inputString);
+
         System.out.println("Add method calls for " + StringCalculator.GetCalledCount() + " Times\n\n");
 
         inputString="-1,2,3,4"; // Throws Exception and exection stops

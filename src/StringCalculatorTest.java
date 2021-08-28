@@ -79,4 +79,11 @@ public class StringCalculatorTest
         StringCalculator.Add("11");
         assertEquals(2,StringCalculator.GetCalledCount());
     }
+
+    //This method will used to sum the number but the value greater than 1000 should be ignored
+    @Test
+    public void doSumByIgnoringValueGreaterThan1000()
+    {
+        assertEquals(6,StringCalculator.Add("1,2,3,1001,1002"));
+    }
 }

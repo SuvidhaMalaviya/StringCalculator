@@ -27,6 +27,8 @@ public class StringCalculator
 
             checkAllNumbersAreNonNegative(listOfNumberInInt);
 
+            listOfNumberInInt = getNumbersLessThan1000(listOfNumberInInt);
+
             int sum = IntStream.of(listOfNumberInInt).sum();
 
             return sum;
@@ -44,13 +46,23 @@ public class StringCalculator
     // If not it will throw an Exception
     private static void checkAllNumbersAreNonNegative(int[] listOfNumberInInt) {
         int[] negativeNumbers = Arrays.stream(listOfNumberInInt)
-                .filter(i -> i < 0)        // >= to include 0
+                .filter(i -> i < 0)
                 .toArray();
 
         if (negativeNumbers.length > 0)
         {
             throw new RuntimeException("Negatives not allowed : " + Arrays.toString(negativeNumbers));
         }
+    }
+
+    // This method will filter the number that are less than 1000
+    private static int[] getNumbersLessThan1000(int[] listOfNumberInInt) {
+
+        int[] lessThan1000 = Arrays.stream(listOfNumberInInt)
+                .filter(i -> i < 1000)
+                .toArray();
+
+        return lessThan1000;
     }
 
     // This method will split the array by using delimiter
