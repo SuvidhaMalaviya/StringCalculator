@@ -48,4 +48,11 @@ public class StringCalculatorTest
     {
         assertEquals(3,StringCalculator.Add("//;\n1;2"));
     }
+
+    //This method will used to support dynamic delimiter that is special symbol
+    @Test
+    public void acceptStringWithDynamicDelimiterThatIsSpecialSymbol()
+    {
+        assertEquals(3,StringCalculator.Add("//.\n1.2"));
+    }
 }

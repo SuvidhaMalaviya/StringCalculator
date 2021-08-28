@@ -33,17 +33,21 @@ public class StringCalculator
 
         if(numbers.startsWith("//"))
         {
-            Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(numbers);
-            matcher.matches();
-
-            String dynamicDelimiter = matcher.group(1);
-            String listOfNumber = matcher.group(2);
-
-            return listOfNumber.split(dynamicDelimiter);
+            return splitByDynamicDelimiter(numbers);
         }
 
         String[] tokens = numbers.split(",|\n");
         return tokens;
+    }
+
+    private static String[] splitByDynamicDelimiter(String numbers) {
+        Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(numbers);
+        matcher.matches();
+
+        String dynamicDelimiter = matcher.group(1);
+        String listOfNumber = matcher.group(2);
+
+        return listOfNumber.split(Pattern.quote(dynamicDelimiter));
     }
 
     // This method will be used to convert the string to integer if the string is digit else it throws exception

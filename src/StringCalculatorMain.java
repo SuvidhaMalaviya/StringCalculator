@@ -31,6 +31,9 @@ public class StringCalculatorMain
 
         inputString="///\n1/2/3";
         generateOutput(inputString);
+
+        inputString="//.\n1.2.3";
+        generateOutput(inputString);
     }
 
     static void generateOutput(String inputString){
