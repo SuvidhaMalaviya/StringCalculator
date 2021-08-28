@@ -1,7 +1,4 @@
-import com.sun.deploy.util.StringUtils;
-
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
@@ -13,8 +10,11 @@ import java.util.stream.IntStream;
 
 public class StringCalculator
 {
+    static int coundAddMethodCalling = 0; // counter for add method calling
+
     public static int Add(String numbers)
     {
+        coundAddMethodCalling++;
         if(numbers.isEmpty())
         {
             return 0;
@@ -32,6 +32,12 @@ public class StringCalculator
             return sum;
         }
 
+    }
+
+    // This method will return the value of how many time the Add method was called
+    public static int GetCalledCount()
+    {
+        return coundAddMethodCalling;
     }
 
     // This method will check that if all numbers are non negative or not.

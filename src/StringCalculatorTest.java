@@ -70,4 +70,13 @@ public class StringCalculatorTest
             assertEquals("Negatives not allowed : [-1]", e.getMessage());
         }
     }
+
+    //This method will count how many times the Add method was called
+    @Test
+    public void countHowManyTimeAddMethodCalled()
+    {
+        StringCalculator.Add("11");
+        StringCalculator.Add("11");
+        assertEquals(2,StringCalculator.GetCalledCount());
+    }
 }
